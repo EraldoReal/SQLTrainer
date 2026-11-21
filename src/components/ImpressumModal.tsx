@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, Scale, Mail, MapPin, ShieldCheck } from 'lucide-react';
+import { X, Scale, Mail, MapPin, ShieldCheck, BarChart3 } from 'lucide-react';
 import { Language, getTranslations, localizeText } from '../i18n/translations';
 
 interface ImpressumModalProps {
@@ -47,7 +47,7 @@ export const ImpressumModal: React.FC<ImpressumModalProps> = ({
               id="impressum-modal-title"
               className="text-sm font-semibold text-slate-900 dark:text-slate-100"
             >
-              {localizeText(language, 'Impressum & Rechtliches', 'Legal Notice & Imprint')}
+              {localizeText(language, 'Impressum & Datenschutz', 'Legal Notice & Privacy Policy')}
             </h2>
           </div>
           <button
@@ -60,7 +60,7 @@ export const ImpressumModal: React.FC<ImpressumModalProps> = ({
           </button>
         </div>
 
-        <div className="p-5 space-y-4 text-sm text-slate-700 dark:text-slate-300">
+        <div className="p-5 space-y-4 text-sm text-slate-700 dark:text-slate-300 max-h-[75vh] overflow-y-auto">
           <div className="rounded border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 p-3.5 space-y-2">
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               {localizeText(
@@ -105,6 +105,40 @@ export const ImpressumModal: React.FC<ImpressumModalProps> = ({
                 language,
                 'Alle SQL-Abfragen, Übungsdatenbanken, eigene Aufgaben und Snippets werden ausschließlich lokal auf deinem Gerät (WebAssembly / localStorage) verarbeitet. Es findet keine Übertragung deiner SQL-Daten an Server statt.',
                 'All SQL queries, practice databases, custom tasks, and snippets are processed strictly locally on your device (WebAssembly / localStorage). No SQL data is transmitted to external servers.'
+              )}
+            </p>
+          </div>
+
+          <div className="rounded border border-slate-200 dark:border-slate-800 p-3.5 space-y-2">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200">
+              <BarChart3 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+              <span>
+                {localizeText(
+                  language,
+                  'Webanalyse durch selbstgehostetes Umami',
+                  'Web Analytics via Self-Hosted Umami'
+                )}
+              </span>
+            </div>
+            <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+              {localizeText(
+                language,
+                'Wir nutzen auf dieser Website das Open-Source-Analysetool Umami, um die Nutzung unserer Website statistisch auszuwerten und unser Angebot zu verbessern. Umami wird vollständig auf unseren eigenen Servern in Deutschland betrieben.',
+                'We use the open-source analytics tool Umami on this website to statistically evaluate website usage and improve our offering. Umami is operated exclusively on our own servers in Germany.'
+              )}
+            </p>
+            <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+              {localizeText(
+                language,
+                'Das Tool verwendet keine Cookies und speichert keine personenbezogenen Daten. Ihre IP-Adresse wird nicht gespeichert, sondern unmittelbar nach dem Aufruf anonymisiert gehasht. Ein Rückschluss auf Ihre Person oder ein seitenübergreifendes Tracking (Cross-Site-Tracking) ist technisch ausgeschlossen.',
+                'The tool does not use cookies and does not store any personal data. Your IP address is never stored; instead, it is anonymized and hashed immediately upon access. Identification of your person or cross-site tracking is technically impossible.'
+              )}
+            </p>
+            <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+              {localizeText(
+                language,
+                'Rechtsgrundlage für die Datenverarbeitung ist unser berechtigtes Interesse an der bedarfsgerechten Gestaltung und Optimierung unseres Webangebots gemäß Art. 6 Abs. 1 lit. f DSGVO.',
+                'The legal basis for data processing is our legitimate interest in the needs-based design and optimization of our web offering pursuant to Art. 6(1)(f) GDPR.'
               )}
             </p>
           </div>
