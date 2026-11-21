@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+src-tauri/target/
+
+# Environment & secrets
+.env
+.env.*
+*.key
+*.pem
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+*.log

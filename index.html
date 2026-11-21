@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL Trainer – Interaktiv SQL &amp; MySQL im Browser üben</title>
+    <meta
+      name="description"
+      content="Kostenloser interaktiver SQL- und MySQL-Trainer direkt im Browser mit WebAssembly. Übe SELECT, JOINs, GROUP BY, Unterabfragen und Abitur-Aufgaben ohne Installation."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://sql.best-tools.app/" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Cpath d='M9 11h14M9 16h14M9 21h9' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sql.best-tools.app/" />
+    <meta property="og:title" content="SQL Trainer – Interaktiv SQL &amp; MySQL im Browser üben" />
+    <meta
+      property="og:description"
+      content="Kostenloser interaktiver SQL- und MySQL-Trainer direkt im Browser. Mit Übungsdatenbanken, Sofort-Feedback und Abitur-Aufgaben."
+    />
+    <meta property="og:image" content="https://sql.best-tools.app/og-image.png" />
+    <meta property="og:locale" content="de_DE" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SQL Trainer – Interaktiv SQL &amp; MySQL im Browser üben" />
+    <meta
+      name="twitter:description"
+      content="Interaktiv SQL &amp; MySQL im Browser üben – kostenlos, lokal via WebAssembly, ohne Anmeldung."
+    />
+    <meta name="twitter:image" content="https://sql.best-tools.app/og-image.png" />
+
+    <!-- JSON-LD: SoftwareApplication -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "SQL Trainer",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web",
+        "url": "https://sql.best-tools.app/",
+        "inLanguage": ["de", "en"],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        },
+        "description": "Interaktiver SQL- und MySQL-Trainer im Browser auf Basis von WebAssembly (sql.js) mit Übungsaufgaben, Schema-Explorer und automatischer Auswertung."
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Muss ich eine Datenbank oder MySQL installieren?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nein. Der SQL Trainer läuft vollständig lokal in deinem Browser mithilfe von WebAssembly (sql.js). Es ist keine Installation und keine Registrierung nötig."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Eignet sich der SQL Trainer für das Informatik-Abitur?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Neben Grundlagen zu SELECT, WHERE, GROUP BY und JOINs enthält der Trainer spezielle Aufgaben im Stil des Informatik-Abiturs sowie einen MySQL-Kompatibilitätsmodus."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Werden meine SQL-Abfragen an einen Server gesendet?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nein. Alle Abfragen werden ausschließlich clientseitig in deinem Browser ausgeführt. Deine Daten verlassen dein Gerät nicht."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
