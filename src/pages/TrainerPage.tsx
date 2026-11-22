@@ -49,6 +49,7 @@ import { AppHub } from '../components/AppHub';
 import { ErdDesigner } from '../components/ErdDesigner';
 import type { LearningPathId } from '../data/learningPaths';
 import { loadCompletedTaskIds, resetPathProgress } from '../utils/progressStore';
+import { consumeBlogHandoff } from '../utils/blogHandoff';
 import {
   checkForDesktopUpdate,
   getDesktopAppVersion,
@@ -632,6 +633,46 @@ export const TrainerPage: React.FC<TrainerPageProps> = ({
     },
     [isEngineReady, showToast]
   );
+
+  const blogHandoffCheckedRef = useRef(false);
+
+  useEffect(() => {
+    if (!isEngineReady || blogHandoffCheckedRef.current) return;
+    blogHandoffCheckedRef.current = true;
+    const handoff = consumeBlogHandoff();
+    if (!handoff) return;
+
+    if (handoff.type === 'editor') {
+      if (handoff.dbId) {
+        handleSelectDatabase(handoff.dbId);
+      }
+      setSqlCode(handoff.sql);
+      setHasUnsavedChanges(false);
+      setMode('free');
+    } else if (handoff.type === 'hub-project') {
+      listSavedDatabases()
+        .then((projects) => {
+          setSavedProjects(projects);
+          const target = projects.find((p) => p.id === handoff.projectId);
+          if (target) {
+            handleOpenSavedProject(target);
+          } else {
+            setMode('hub');
+            showToast(
+              localizeText(
+                language,
+                'Datenbank im Hub gespeichert.',
+                'Database saved in Hub.'
+              )
+            );
+          }
+        })
+        .catch((err) => {
+          console.error('Failed to load blog hub project:', err);
+          setMode('hub');
+        });
+    }
+  }, [handleOpenSavedProject, handleSelectDatabase, isEngineReady, language, showToast]);
 
   const handleRenameProject = useCallback(
     async (id: string, newName: string) => {

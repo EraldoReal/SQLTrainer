@@ -1000,6 +1000,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             >
               {t.nav.faq}
             </a>
+            <a
+              href={language === 'en' ? '/en/blog' : '/blog'}
+              onClick={(e) => {
+                e.preventDefault();
+                navigate(language === 'en' ? '/en/blog' : '/blog');
+              }}
+              className="hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+            >
+              Blog
+            </a>
             <button
               type="button"
               onClick={() => setImpressumOpen(true)}

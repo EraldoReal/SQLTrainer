@@ -3,6 +3,8 @@ import type { Language } from './i18n/translations';
 import { LandingPage } from './pages/LandingPage';
 import { SeoSubpage, type SeoRoute } from './pages/SeoSubpage';
 import { TrainerPage } from './pages/TrainerPage';
+import { BlogIndexPage } from './pages/BlogIndexPage';
+import { BlogPostPage } from './pages/BlogPostPage';
 
 function isTauriEnvironment(): boolean {
   return (
@@ -113,6 +115,36 @@ export function App(): React.ReactElement {
         navigate={navigate}
       />
     );
+  }
+
+  if (pathname === '/blog' || pathname === '/en/blog') {
+    const blogLang: Language = pathname.startsWith('/en/') ? 'en' : 'de';
+    return (
+      <BlogIndexPage
+        language={blogLang}
+        onLanguageChange={setLanguage}
+        theme={theme}
+        onThemeChange={setTheme}
+        navigate={navigate}
+      />
+    );
+  }
+
+  if (pathname.startsWith('/blog/') || pathname.startsWith('/en/blog/')) {
+    const isEn = pathname.startsWith('/en/blog/');
+    const slug = pathname.slice(isEn ? '/en/blog/'.length : '/blog/'.length);
+    if (slug && !slug.includes('/')) {
+      return (
+        <BlogPostPage
+          slug={slug}
+          language={isEn ? 'en' : 'de'}
+          onLanguageChange={setLanguage}
+          theme={theme}
+          onThemeChange={setTheme}
+          navigate={navigate}
+        />
+      );
+    }
   }
 
   return (
